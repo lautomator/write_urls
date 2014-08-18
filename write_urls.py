@@ -11,7 +11,8 @@
 # Author: John Merigliano
 # July 2014
 
-import os, re
+import os
+import re
 
 # Specify the directory to search for folders here.
 curr_dir = os.listdir('./')
@@ -48,8 +49,13 @@ def add_URLs(file_names):
     # Generate the URLS and add them to the list.
     for edition in file_names:
         # Specify URL, as needed.
-        URLs.append('<a href="#' + edition + '/index.html">' +
-            edition + '</a><br />')
+        URLs.append(
+            '<a href="#'
+            + edition
+            + '/index.html">'
+            + edition
+            + '</a><br />\n'
+        )
 
     return URLs
 
@@ -61,10 +67,13 @@ def generate_html_page(urls):
     fin = open('index.html', 'w')
 
     # The html template:
-    html_open = '<!DOCTYPE html><html><head><meta http-equiv="Content-Type"' \
-    'content="text/html; charset=UTF-8" /><title>index</title></head>' \
-    '<body><!--// This page was automatically generated: DO NOT EDIT //-->'
-    html_close = '</body></html>'
+    html_open = '<!DOCTYPE html>\n<html>\n\
+    <head>\n\
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>\n\
+    <title>index</title>\n</head>\n<body>\n\
+    <!--// This page was automatically generated: DO NOT EDIT //-->\n'
+
+    html_close = '</body>\n</html>\n'
 
     # Generate the page:
     fin.write(html_open)
